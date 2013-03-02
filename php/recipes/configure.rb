@@ -35,3 +35,10 @@ directory "/srv/www/urapp/" do
   recursive true
 end
 Chef::Log.debug("Ravis : Directory code finished")
+
+
+execute "slapadd" do
+  command "chmod -R 777 /srv/www/urapp/"
+  action :run
+end
+Chef::Log.debug("Ravis : permission changed recursively finished")
