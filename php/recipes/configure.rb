@@ -25,12 +25,13 @@ end
 
 
 
-Chef::Log.debug("Ravis changes in custom cookbook executed")
+Chef::Log.debug("Ravis : Directory code started")
 
-directory "#{deploy[:deploy_to]}" do
+directory "/srv/www/urapp/" do
   group params[:group]
   owner params[:user]
   mode 0777
   action :create
   recursive true
 end
+Chef::Log.debug("Ravis : Directory code finished")
