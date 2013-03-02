@@ -4,7 +4,7 @@ node[:deploy].each do |application, deploy|
     next
   end
    
-  Chef::Log.debug("Ravis changes in custom cookbook executed");
+  Chef::Log.debug("Ravis changes in custom cookbook executed")
   script "install_something" do
   interpreter "bash"
   user "root"
