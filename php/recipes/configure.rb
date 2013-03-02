@@ -26,14 +26,6 @@ end
 
 
 Chef::Log.debug("Ravis changes in custom cookbook executed")
-   #script "install_something" do
-   #     interpreter "bash"
-   #     user "root"
-   #     cwd "/tmp"
-   #     code <<-EOH
-   #     chmod -R 777 /srv/www/urapp/current/media
-   #     EOH
-   # end
 
 directory "#{deploy[:deploy_to]}" do
   group params[:group]
