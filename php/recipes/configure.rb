@@ -4,24 +4,6 @@ node[:deploy].each do |application, deploy|
     next
   end
    
-  Chef::Log.debug("Ravis changes in custom cookbook executed")
-   #script "install_something" do
-   #     interpreter "bash"
-   #     user "root"
-   #     cwd "/tmp"
-   #     code <<-EOH
-   #     chmod -R 777 /srv/www/urapp/current/media
-   #     EOH
-   # end
-
-   directory "#{deploy[:deploy_to]}" do
-      group params[:group]
-      owner params[:user]
-      mode 0777
-      action :create
-      recursive true
-   end
-
   # write out opsworks.php
   template "#{deploy[:deploy_to]}/shared/config/opsworks.php" do
     cookbook 'php'
@@ -39,4 +21,24 @@ node[:deploy].each do |application, deploy|
       File.exists?("#{deploy[:deploy_to]}/shared/config")
     end
   end
+end
+
+
+
+Chef::Log.debug("Ravis changes in custom cookbook executed")
+   #script "install_something" do
+   #     interpreter "bash"
+   #     user "root"
+   #     cwd "/tmp"
+   #     code <<-EOH
+   #     chmod -R 777 /srv/www/urapp/current/media
+   #     EOH
+   # end
+
+directory "#{deploy[:deploy_to]}" do
+  group params[:group]
+  owner params[:user]
+  mode 0777
+  action :create
+  recursive true
 end
