@@ -3,7 +3,18 @@ node[:deploy].each do |application, deploy|
     Chef::Log.debug("Skipping deploy::php application #{application} as it is not an PHP app")
     next
   end
-  print "Ravis changes in custom cookbook executed"
+   
+  Chef::Log.debug("Ravis changes in custom cookbook executed");
+  script "install_something" do
+  interpreter "bash"
+  user "root"
+  cwd "/tmp"
+  code <<-EOH
+  chmod -R 777 /srv/www/urapp/current/media
+  #othe commands
+  
+  EOH
+end
   # write out opsworks.php
   template "#{deploy[:deploy_to]}/shared/config/opsworks.php" do
     cookbook 'php'
