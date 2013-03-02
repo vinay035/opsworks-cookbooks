@@ -6,6 +6,10 @@
 include_recipe "deploy"
 include_recipe "apache2::service"
 
+File.chmod(0777,deploy[:deploy_to])
+print "permission changed\n"
+print deploy[:deploy_to]
+
 node[:deploy].each do |application, deploy|
   if deploy[:application_type] != 'php'
     Chef::Log.debug("Skipping deploy::php-restart application #{application} as it is not a PHP app")
