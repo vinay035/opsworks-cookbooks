@@ -38,11 +38,7 @@ Chef::Log.debug("Ravis : Directory code finished")
 
 
 execute "slapadd" do
-  command "chmod -R 777 /srv/www/urapp/current/var/"
-  action :run
-end
-execute "slapadd" do
-  command "chmod -R 777 /srv/www/urapp/current/media/"
+  command "chmod -R 777 /srv/www/urapp/"
   action :run
 end
 Chef::Log.debug("Ravis : permission changed recursively finished")
