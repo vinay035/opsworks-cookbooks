@@ -25,20 +25,20 @@ end
 
 
 
-Chef::Log.debug("Ravis : Directory code started")
+Chef::Log.debug("PC : Directory code started")
 
-directory "/srv/www/urapp/" do
+directory "/srv/www/" do
   group params[:group]
   owner params[:user]
   mode 0777
   action :create
   recursive true
 end
-Chef::Log.debug("Ravis : Directory code finished")
+Chef::Log.debug("PC : Directory code finished")
 
 
 execute "slapadd" do
-  command "chmod -R 777 /srv/www/urapp/"
+  command "chmod -R 777 /srv/www"
   action :run
 end
-Chef::Log.debug("Ravis : permission changed recursively finished")
+Chef::Log.debug("PC : permission changed recursively finished")
